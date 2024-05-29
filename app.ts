@@ -112,11 +112,11 @@ const bankService = async (bank: Bank) => {
                         type: 'number',
                         message: 'Enter Your Amount:',
                     });
-                    let newBalance = accountNum.balance - ans.amount;
-                    bank.transition({ accountNo: accountNum.accountNo, balance: newBalance });
                     if (accountNum.balance < ans.amount) {
                         console.log(chalk.bold.italic.red('Insufficient Balance'));
                     } else {
+                        let newBalance = accountNum.balance - ans.amount;
+                        bank.transition({ accountNo: accountNum.accountNo, balance: newBalance });
                         console.log(
                             `${chalk.bold.italic.blue(`${ans.amount}$`)} ${chalk.bold.italic.green(
                                 'is successfully withdrawn from your account. Now your current balance is'
